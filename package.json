@@ -1,0 +1,17 @@
+{
+  "name": "biobetter",
+  "version": "1.1.1",
+  "private": true,
+  "description": "A reversible reading upgrade for BioPlus notebooks",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test --test-isolation=none tests/*.test.cjs",
+    "check": "node --check extension/content.js && node --check extension/math.js && node --check extension/course.js && node --check extension/popup.js"
+  },
+  "dependencies": {
+    "katex": "0.19.1"
+  },
+  "devDependencies": {
+    "jsdom": "29.1.1"
+  }
+}
