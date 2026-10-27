@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "BioBetter",
-  "version": "1.1.1",
-  "description": "A calmer BioPlus: readable notebooks, clear course progress, and a dedicated personal-notes shortcut. Switch back anytime.",
+  "version": "1.2.0",
+  "description": "A calmer BioPlus: readable notebooks, clear course progress, and organized study materials. Switch back anytime.",
   "permissions": [
     "storage"
   ],
@@ -46,6 +46,19 @@
       ],
       "js": [
         "course.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://bioplus.co.il/subsubject/*",
+        "https://www.bioplus.co.il/subsubject/*"
+      ],
+      "css": [
+        "subsubject.css"
+      ],
+      "js": [
+        "subsubject.js"
       ],
       "run_at": "document_idle"
     }

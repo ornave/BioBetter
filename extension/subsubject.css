@@ -1,0 +1,165 @@
+/* Study hubs: original resource links, selects and completion controls stay live. */
+html[data-biobetter-subsubject="on"] { background: #f1f5fb !important; scroll-padding-top: 84px; }
+html[data-biobetter-subsubject="on"] body.single-subsubject {
+  background: #f1f5fb !important; color: #2b3e58 !important; padding-top: 64px !important;
+  font-family: Arial, "Noto Sans Hebrew", sans-serif !important;
+}
+html[data-biobetter-subsubject="on"] .dynamicHeader {
+  position: relative !important; top: auto !important; background: #e7effa !important;
+  box-shadow: none !important; border-bottom: 1px solid #d4e0f1 !important;
+}
+html[data-biobetter-subsubject="on"] body > .whole {
+  width: 100% !important; max-width: 1440px !important; box-sizing: border-box !important;
+  height: auto !important; max-height: none !important; min-height: 0 !important;
+  overflow: visible !important; margin: 0 auto !important; padding: 38px 40px 80px !important;
+  background: transparent !important; display: block !important;
+}
+html[data-biobetter-subsubject="on"] .whole > #title {
+  margin: 0 0 12px !important; color: #657d9c !important; font: 15px/1.7 Arial,sans-serif !important;
+}
+html[data-biobetter-subsubject="on"] .whole > #title a { color: #356ab3 !important; text-decoration: none !important; }
+html[data-biobetter-subsubject="on"] .whole > h1 {
+  margin: 0 0 28px !important; max-width: 1100px; color: #173b68 !important;
+  font: 400 clamp(25px,2.4vw,36px)/1.5 Arial,sans-serif !important; text-align: start !important;
+}
+html[data-biobetter-subsubject="on"] .whole > h1 b { font-weight: 700 !important; }
+html[data-biobetter-subsubject="on"] #description { font: 17px/1.8 Arial,sans-serif !important; color: #405b7e !important; }
+html[data-biobetter-subsubject="on"] #description:empty { display: none !important; }
+html[data-biobetter-subsubject="on"] .whole > .main {
+  float: none !important; clear: both !important;
+  display: grid !important; grid-template-columns: repeat(3,minmax(0,1fr)) !important;
+  gap: 22px !important; align-items: start !important; width: 100% !important; min-width: 0 !important;
+  margin: 0 !important; padding: 0 !important; height: auto !important; max-height: none !important;
+  overflow: visible !important; background: transparent !important;
+}
+html[data-biobetter-subsubject="on"] .main > .bpsf-entry {
+  grid-column: 1 / -1; margin: 0 !important; padding: 0 !important; background: transparent !important;
+  box-shadow: none !important; border: 0 !important; text-align: end !important;
+}
+html[data-biobetter-subsubject="on"] .main .bpsf-button {
+  padding: 10px 16px !important; border: 1px solid #cbdcf0 !important; border-radius: 9px !important;
+  background: #fff !important; color: #285c9f !important; font: 14px/1.5 Arial,sans-serif !important;
+}
+html[data-biobetter-subsubject="on"] .main > .checkList {
+  grid-column: 1 / -1 !important; grid-row: auto !important; display: grid !important;
+  grid-template-columns: repeat(3,minmax(0,1fr)) !important; gap: 20px 30px !important;
+  width: 100% !important; box-sizing: border-box !important; margin: 0 !important;
+  padding: 24px 28px !important; background: #e7effb !important; border: 1px solid #ccdcef !important;
+  border-radius: 16px !important; box-shadow: none !important; height: auto !important;
+}
+html[data-biobetter-subsubject="on"] .bb-progress-heading {
+  grid-column: 1 / -1; margin: 0 !important; font: 700 18px/1.5 Arial,sans-serif !important; color: #173b68 !important;
+}
+html[data-biobetter-subsubject="on"] .checkList > .related {
+  box-sizing: border-box !important; grid-template-rows: 40px 24px !important;
+  display: grid !important; grid-template-columns: 24px minmax(0,1fr) !important;
+  gap: 8px !important; align-items: center !important; width: auto !important; min-width: 0 !important;
+  margin: 0 !important; padding: 0 !important; height: auto !important; background: transparent !important;
+  border: 0 !important; box-shadow: none !important; color: #356ab3 !important;
+}
+html[data-biobetter-subsubject="on"] .checkList .related > .icon { font-size: 17px !important; color: #356ab3 !important; margin: 0 !important; }
+html[data-biobetter-subsubject="on"] .checkList select {
+  box-sizing: border-box !important;
+  width: 100% !important; min-width: 0 !important; max-width: none !important; height: 40px !important;
+  padding: 6px 9px !important; border: 1px solid #ccdcef !important; border-radius: 8px !important;
+  font: 14px/1.5 Arial,sans-serif !important; background-color: #f9fbff !important; color: #264f83 !important;
+}
+html[data-biobetter-subsubject="on"] .checkList option.completed { color: #173b68 !important; background: #e1edff !important; }
+html[data-biobetter-subsubject="on"] .lessonTotalLabel { font: 700 15px/40px Arial,sans-serif !important; color: #173b68 !important; }
+html[data-biobetter-subsubject="on"] .checkList .progress-container[data-bb-progress] {
+  grid-column: 2; position: relative !important; width: 100% !important; height: 24px !important;
+  min-height: 0 !important; margin: 0 !important; padding: 0 !important; border: 0 !important;
+}
+html[data-biobetter-subsubject="on"] .checkList .progress-container[data-bb-progress] > :not(.bb-progress-value) { display: none !important; }
+html[data-biobetter-subsubject="on"] .checkList .progress-container[data-bb-progress]::before {
+  content: ""; position: absolute; inset: 9px 0 auto 48px; height: 6px; border-radius: 8px;
+  background: linear-gradient(to left,#3975cd 0%,#3975cd var(--bb-progress),#cbdaf0 var(--bb-progress),#cbdaf0 100%);
+}
+html[data-biobetter-subsubject="on"] .bb-progress-value {
+  position: absolute; left: 0; top: 0; direction: ltr; color: #285c9f; font: 700 13px/24px Arial,sans-serif;
+}
+html[data-biobetter-subsubject="on"] .bb-library-heading {
+  grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: end;
+  gap: 16px; margin: 14px 0 0;
+}
+html[data-biobetter-subsubject="on"] .bb-library-heading span { color: #7085a1; font: 13px/1.8 Arial,sans-serif; }
+html[data-biobetter-subsubject="on"] .bb-library-heading h2 { margin: 4px 0 0 !important; color: #173b68 !important; font: 700 25px/1.5 Arial,sans-serif !important; }
+html[data-biobetter-subsubject="on"] .bb-library-heading button {
+  border: 1px solid #ccdcef; border-radius: 8px; padding: 9px 14px; background: #fff; color: #285c9f;
+  font: 14px/1.5 Arial,sans-serif; cursor: pointer; flex-shrink: 0;
+}
+html[data-biobetter-subsubject="on"] .main > .box.items {
+  grid-column: auto !important; grid-row: auto !important; display: flex !important; flex-direction: column !important;
+  width: auto !important; min-width: 0 !important; height: auto !important; min-height: 0 !important;
+  margin: 0 !important; padding: 24px !important; box-sizing: border-box !important;
+  background: #fff !important; border: 1px solid #d9e3f0 !important; border-radius: 16px !important;
+  box-shadow: 0 4px 18px #173c6b05 !important; text-align: start !important; overflow: visible !important;
+}
+html[data-biobetter-subsubject="on"] .main > .box.items h3 {
+  display: flex !important; flex-wrap: wrap; align-items: center !important; gap: 10px;
+  font: 700 20px/1.5 Arial,sans-serif !important; color: #173b68 !important;
+  margin: 0 !important; padding: 0 !important; text-align: start !important; border: 0 !important;
+}
+html[data-biobetter-subsubject="on"] .box.items h3 .icon {
+  display: inline-flex !important; justify-content: center; align-items: center; width: 38px; height: 38px;
+  flex-shrink: 0; margin: 0 !important; background: #eaf1fc; color: #3975cd !important;
+  border-radius: 10px; font-size: 18px !important;
+}
+html[data-biobetter-subsubject="on"] .bb-resource-count { margin-inline-start: auto; font: 12px/1.5 Arial,sans-serif; color: #657d9c; white-space: nowrap; }
+html[data-biobetter-subsubject="on"] .bb-resource-caption { margin: 10px 0 18px !important; color: #7085a1 !important; font: 13px/1.7 Arial,sans-serif !important; }
+html[data-biobetter-subsubject="on"] .main > .box.items > a {
+  display: block !important; width: auto !important; padding: 12px 0 !important; margin: 0 !important;
+  border: 0 !important; border-top: 1px solid #edf2f9 !important; border-radius: 0 !important;
+  background: transparent !important; color: #365477 !important; font: 15px/1.7 Arial,sans-serif !important;
+  text-decoration: none !important; text-align: start !important; overflow-wrap: anywhere;
+}
+html[data-biobetter-subsubject="on"] .main > .box.items > a:hover { color: #2165bd !important; text-decoration: underline !important; }
+html[data-biobetter-subsubject="on"] .main > :is(.system-quiz,.flashcard).box.items { background: #f8fbff !important; border-color: #c4d8f3 !important; }
+html[data-biobetter-subsubject="on"] .main > .flashcard > a.flashcard-practice-cta {
+  padding: 12px 16px !important; margin-top: 8px !important; border: 0 !important; border-radius: 9px !important;
+  color: #fff !important; background: #285c9f !important; text-align: center !important;
+}
+html[data-biobetter-subsubject="on"] .bb-completion {
+  clear: both; margin-top: 32px; border: 1px solid #d2e0f1; border-radius: 14px; background: #fff;
+  scroll-margin-top: 84px;
+}
+html[data-biobetter-subsubject="on"] .bb-completion > summary { padding: 22px 26px; cursor: pointer; font: 700 18px/1.6 Arial,sans-serif; color: #285c9f; }
+html[data-biobetter-subsubject="on"] #bp-resource-completion {
+  width: 100% !important; max-width: none !important; box-sizing: border-box !important;
+  margin: 0 !important; padding: 0 26px 26px !important; border: 0 !important; border-radius: 0 !important;
+  box-shadow: none !important; background: transparent !important;
+}
+html[data-biobetter-subsubject="on"] #bp-resource-completion h2 { font: 700 18px/1.6 Arial,sans-serif !important; color: #173b68 !important; }
+html[data-biobetter-subsubject="on"] #bp-resource-completion p { font: 14px/1.8 Arial,sans-serif !important; color: #657d9c !important; }
+html[data-biobetter-subsubject="on"] #bp-resource-completion li {
+  display: grid !important; grid-template-columns: minmax(0,1fr) 100px 140px !important; align-items: center !important;
+  gap: 20px !important; padding: 14px 0 !important; margin: 0 !important; border-color: #e5edf8 !important;
+  font: 15px/1.7 Arial,sans-serif !important;
+}
+html[data-biobetter-subsubject="on"] #bp-resource-completion .bp-resource-name { color: #285c9f !important; overflow-wrap: anywhere; }
+html[data-biobetter-subsubject="on"] #bp-resource-completion .bp-resource-state { color: #657d9c !important; font: 13px/1.6 Arial,sans-serif !important; }
+html[data-biobetter-subsubject="on"] #bp-resource-completion button {
+  color: #fff !important; background: #285c9f !important; border: 1px solid #285c9f !important;
+  padding: 9px 12px !important; border-radius: 8px !important; font: 14px/1.6 Arial,sans-serif !important;
+}
+html[data-biobetter-subsubject="on"] #bp-resource-completion button[data-done="1"] { background: #edf3fc !important; color: #285c9f !important; border-color: #cbdcf0 !important; }
+html[data-biobetter-subsubject="on"] #bp-resource-completion button:disabled { opacity: .55 !important; cursor: wait !important; }
+html[data-biobetter-subsubject="on"] .whole :is(a,button,select,summary):focus-visible { outline: 3px solid #78a9f2 !important; outline-offset: 4px !important; }
+html[data-biobetter-subsubject="on"] body > footer.elementor-location-footer { display: none !important; }
+@media(max-width:1100px) {
+  html[data-biobetter-subsubject="on"] .whole > .main { grid-template-columns: repeat(2,minmax(0,1fr)) !important; }
+  html[data-biobetter-subsubject="on"] .main > .checkList { grid-template-columns: repeat(2,minmax(0,1fr)) !important; }
+}
+@media(max-width:700px) {
+  html[data-biobetter-subsubject="on"] body > .whole { padding: 24px 16px 60px !important; }
+  html[data-biobetter-subsubject="on"] .whole > .main { grid-template-columns: minmax(0,1fr) !important; gap: 18px !important; }
+  html[data-biobetter-subsubject="on"] .main > .checkList { grid-template-columns: minmax(0,1fr) !important; padding: 20px !important; }
+  html[data-biobetter-subsubject="on"] .bb-library-heading { align-items: start; flex-direction: column; }
+  html[data-biobetter-subsubject="on"] #bp-resource-completion { padding: 0 18px 18px !important; }
+  html[data-biobetter-subsubject="on"] #bp-resource-completion li { grid-template-columns: minmax(0,1fr) auto !important; gap: 10px !important; }
+  html[data-biobetter-subsubject="on"] #bp-resource-completion li > a { grid-column: 1 / -1; }
+}
+@media print {
+  html[data-biobetter-subsubject="on"] body.single-subsubject { padding-top: 0 !important; }
+  html[data-biobetter-subsubject="on"] .main > .box.items { break-inside: avoid; }
+}

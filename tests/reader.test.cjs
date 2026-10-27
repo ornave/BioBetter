@@ -143,9 +143,9 @@ test('manifest restricts scope and bundles executable code locally', () => {
   const m = JSON.parse(readFileSync('extension/manifest.json', 'utf8'));
   assert.deepEqual(m.permissions, ['storage']);
   assert.equal(m.manifest_version, 3);
-  assert.equal(m.content_scripts.length, 2);
+  assert.equal(m.content_scripts.length, 3);
   for (const script of m.content_scripts) {
-    assert.ok(script.matches.every(match => /^https:\/\/(www\.)?bioplus\.co\.il\/(notebook|course)\/\*$/.test(match)));
+    assert.ok(script.matches.every(match => /^https:\/\/(www\.)?bioplus\.co\.il\/(notebook|course|subsubject)\/\*$/.test(match)));
     for (const file of [...script.js, ...script.css]) assert.ok(readFileSync(`extension/${file}`).length > 0);
   }
 });
