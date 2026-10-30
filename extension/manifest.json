@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "BioBetter",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A calmer BioPlus: readable notebooks, clear course progress, and organized study materials. Switch back anytime.",
   "permissions": [
     "storage"
@@ -27,7 +27,8 @@
         "https://www.bioplus.co.il/notebook/*"
       ],
       "css": [
-        "reader.css"
+        "reader.css",
+        "typography.css"
       ],
       "js": [
         "vendor/katex.min.js",
@@ -42,7 +43,8 @@
         "https://www.bioplus.co.il/course/*"
       ],
       "css": [
-        "course.css"
+        "course.css",
+        "typography.css"
       ],
       "js": [
         "course.js"
@@ -55,7 +57,8 @@
         "https://www.bioplus.co.il/subsubject/*"
       ],
       "css": [
-        "subsubject.css"
+        "subsubject.css",
+        "typography.css"
       ],
       "js": [
         "subsubject.js"

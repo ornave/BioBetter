@@ -14,11 +14,11 @@
   host.id = 'biobetter-ui';
   const ui = host.attachShadow({ mode: 'open' });
   ui.innerHTML = `<style>
-    :host{all:initial;position:fixed;top:0;left:0;right:0;z-index:90000;font-family:Arial,sans-serif;color:#1d3d66;direction:ltr}
+    :host{all:initial;position:fixed;top:0;left:0;right:0;z-index:90000;font-family:"Assistant",sans-serif;color:#1d3d66;direction:ltr}
     *{box-sizing:border-box} .bar{height:64px;display:flex;align-items:center;gap:18px;padding:0 30px;background:#fcfdff;border-bottom:1px solid #d9e3f0;box-shadow:0 2px 12px #173c6b08}
     .brand{display:flex;gap:10px;align-items:center;font-size:20px;letter-spacing:-.7px;font-weight:700;white-space:nowrap}.brand svg{width:28px;height:28px}.brand span{font-weight:400;color:#6b82a1}
     .divider{width:1px;height:24px;background:#d9e3f0}.hint{font-size:11px;letter-spacing:1.4px;color:#6b82a1}.tools{display:flex;align-items:center;gap:9px;margin-left:auto}
-    button,select{font:13px Arial,sans-serif;border:1px solid #d3e0f1;border-radius:8px;background:#fff;color:#2b527f;padding:9px 12px;cursor:pointer;min-height:36px}
+    button,select{font:13px "Assistant",sans-serif;border:1px solid #d3e0f1;border-radius:8px;background:#fff;color:#2b527f;padding:9px 12px;cursor:pointer;min-height:36px}
     button:hover,select:hover{background:#edf4ff}button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #78a9f2;outline-offset:3px}
     select{max-width:230px;direction:rtl} .size{display:flex;align-items:center;gap:7px}.size button{padding:8px}.size output{font-size:12px;color:#657d9c;min-width:18px;text-align:center}
     .toggle{display:flex;align-items:center;gap:9px;border:none;background:#e7f0ff;color:#21528e;font-weight:700;white-space:nowrap}.track{display:block;width:29px;height:17px;border-radius:12px;background:#3975cd;padding:3px}.track:after{content:'';display:block;width:11px;height:11px;border-radius:50%;background:#fff;margin-left:12px}.toggle[aria-checked=false] .track{background:#8695aa}.toggle[aria-checked=false] .track:after{margin-left:0}
@@ -70,7 +70,7 @@
       // Shadow text is excluded from TreeWalker/textContent used by BioPlus annotations.
       const shadow = card.attachShadow({ mode: 'open' });
       const style = document.createElement('style');
-      style.textContent = ':host{display:block;margin:18px 0 24px}section{border:1px solid #d9e3f0;background:#f2f6fd;border-radius:12px;padding:20px 16px;text-align:center;direction:ltr;overflow-x:auto}math{font-size:1.25em}button{display:block;margin:12px auto 0;border:0;background:transparent;color:#5878a0;font:11px Arial;cursor:pointer}button:focus-visible{outline:2px solid #3975cd}';
+      style.textContent = ':host{display:block;margin:18px 0 24px}section{border:1px solid #d9e3f0;background:#f2f6fd;border-radius:12px;padding:20px 16px;text-align:center;direction:ltr;overflow-x:auto}math{font-size:1.25em}button{display:block;margin:12px auto 0;border:0;background:transparent;color:#5878a0;font:11px "Assistant",sans-serif;cursor:pointer}button:focus-visible{outline:2px solid #3975cd}';
       const section = document.createElement('section');
       const equation = document.createElement('div');
       try {

@@ -1,0 +1,15 @@
+/* Apply to the entire enhanced page, including menus, dialogs, notes and
+   dynamically inserted controls. Removing the page attribute restores native
+   fonts without touching lesson text or inline formatting. Assistant is already
+   loaded by BioPlus; no external font request is added by the extension.
+   Icon glyphs and typeset mathematics require their own font families. */
+html:is([data-biobetter="on"], [data-biobetter-course-page="on"], [data-biobetter-subsubject="on"]) body,
+html:is([data-biobetter="on"], [data-biobetter-course-page="on"], [data-biobetter-subsubject="on"]) body *:not(:where(
+  .fa, .fas, .far, .fab, .fal, .fad, .fat,
+  [class^="fa-"], [class*=" fa-"],
+  .dashicons, [class^="eicon-"], [class*=" eicon-"],
+  .ab-icon, .ab-icon *,
+  math, math *, .katex, .katex *
+)) {
+  font-family: 'Assistant',sans-serif !important;
+}

@@ -2,7 +2,7 @@
 html[data-biobetter-course-page="on"] { background: #f1f5fb !important; scroll-padding-top: 84px; }
 html[data-biobetter-course-page="on"] body.single-course {
   background: #f1f5fb !important; color: #2b3e58 !important; padding-top: 64px !important;
-  font-family: Arial, "Noto Sans Hebrew", sans-serif !important;
+  font-family: 'Assistant',sans-serif !important;
 }
 html[data-biobetter-course-page="on"] .dynamicHeader {
   position: relative !important; top: auto !important; background: #e7effa !important;
@@ -31,15 +31,15 @@ html[data-biobetter-course-page="on"] .main > .bpsf-entry {
 }
 html[data-biobetter-course-page="on"] .bpsf-entry .bpsf-button {
   background: #fff !important; border: 1px solid #cbdcf0 !important; border-radius: 10px !important;
-  color: #285c9f !important; font: 14px/1.5 Arial,sans-serif !important; padding: 12px 16px !important;
+  color: #285c9f !important; font: 14px/1.5 'Assistant',sans-serif !important; padding: 12px 16px !important;
 }
 html[data-biobetter-course-page="on"] .main > p:empty { display: none !important; }
 html[data-biobetter-course-page="on"] .main > .bb-course-heading {
   grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between;
   gap: 16px; margin-top: 10px; color: #173b68;
 }
-html[data-biobetter-course-page="on"] .bb-course-heading h2 { margin: 0 !important; font: 700 23px/1.4 Arial,sans-serif !important; color: #173b68 !important; }
-html[data-biobetter-course-page="on"] .bb-course-heading span { font: 14px/1.5 Arial,sans-serif !important; color: #657d9c !important; }
+html[data-biobetter-course-page="on"] .bb-course-heading h2 { margin: 0 !important; font: 700 23px/1.4 'Assistant',sans-serif !important; color: #173b68 !important; }
+html[data-biobetter-course-page="on"] .bb-course-heading span { font: 14px/1.5 'Assistant',sans-serif !important; color: #657d9c !important; }
 html[data-biobetter-course-page="on"] .main > .courseSubjects {
   grid-column: 1 / -1; display: grid !important; grid-template-columns: repeat(3,minmax(0,1fr)) !important;
   gap: 22px !important; align-items: stretch !important; margin: 0 !important; padding: 0 !important;
@@ -59,11 +59,11 @@ html[data-biobetter-course-page="on"] .courseSubjects > .subject.item > .subject
   margin: 0 0 18px !important; border: 0 !important; text-decoration: none !important;
 }
 html[data-biobetter-course-page="on"] .courseSubjects .subjectTitle h3 {
-  font: 700 23px/1.45 Arial,sans-serif !important; color: inherit !important; margin: 0 !important;
+  font: 700 23px/1.45 'Assistant',sans-serif !important; color: inherit !important; margin: 0 !important;
   text-align: start !important;
 }
 html[data-biobetter-course-page="on"] .courseSubjects > .subject.item > a:not(.subjectTitle) {
-  order: 2; display: block !important; font: 400 15px/1.7 Arial,sans-serif !important;
+  order: 2; display: block !important; font: 400 15px/1.7 'Assistant',sans-serif !important;
   color: #405b7e !important; padding: 9px 0 !important; margin: 0 !important;
   border-top: 1px solid #edf2f9; text-decoration: none !important; overflow-wrap: anywhere;
 }
@@ -73,13 +73,13 @@ html[data-biobetter-course-page="on"] .main :is(a,button):focus-visible { outlin
 html[data-biobetter-course-page="on"] .courseSubjects .progress-container[data-bb-progress] {
   order: 1; position: relative !important; width: 100% !important; height: 46px !important;
   min-height: 46px !important; margin: 0 0 20px !important; padding: 0 !important;
-  color: #285c9f !important; font: 600 14px/1.6 Arial,sans-serif !important;
+  color: #285c9f !important; font: 600 14px/1.6 'Assistant',sans-serif !important;
   text-align: left !important;
 }
 html[data-biobetter-course-page="on"] .courseSubjects .progress-container[data-bb-progress] > svg { display: none !important; }
 html[data-biobetter-course-page="on"] .courseSubjects .progress-container[data-bb-progress]::before {
   content: "התקדמות בלמידה"; position: absolute; right: 0; top: 0;
-  font: 400 12px/1.8 Arial,sans-serif; color: #7085a1;
+  font: 400 12px/1.8 'Assistant',sans-serif; color: #7085a1;
 }
 html[data-biobetter-course-page="on"] .courseSubjects .progress-container[data-bb-progress]::after {
   content: ""; position: absolute; inset: auto 0 0; height: 7px; border-radius: 8px;
@@ -88,7 +88,7 @@ html[data-biobetter-course-page="on"] .courseSubjects .progress-container[data-b
 html[data-biobetter-course-page="on"] .courseSubjects .progress-container[data-bb-progress] .progressbar-text {
   position: static !important; transform: none !important; inset: auto !important;
   margin: 0 !important; padding: 0 !important; color: #285c9f !important;
-  font: 600 14px/1.6 Arial,sans-serif !important; direction: ltr;
+  font: 600 14px/1.6 'Assistant',sans-serif !important; direction: ltr;
 }
 /* Personal notes is a full-width utility shortcut, outside the subject grid. */
 html[data-biobetter-course-page="on"] .main > [data-bb-personal-notes] {
@@ -106,17 +106,17 @@ html[data-biobetter-course-page="on"] [data-bb-personal-notes] > .subjectTitle {
   grid-column: 2; grid-row: 1; margin: 0 !important; color: #173b68 !important; text-decoration: none !important;
 }
 html[data-biobetter-course-page="on"] [data-bb-personal-notes] .subjectTitle h3 {
-  color: #173b68 !important; font: 700 21px/1.5 Arial,sans-serif !important; margin: 0 !important;
+  color: #173b68 !important; font: 700 21px/1.5 'Assistant',sans-serif !important; margin: 0 !important;
 }
 html[data-biobetter-course-page="on"] [data-bb-personal-notes] > p {
-  grid-column: 2; grid-row: 2; color: #536f96 !important; font: 14px/1.7 Arial,sans-serif !important; margin: 0 !important;
+  grid-column: 2; grid-row: 2; color: #536f96 !important; font: 14px/1.7 'Assistant',sans-serif !important; margin: 0 !important;
   text-align: start !important;
 }
 html[data-biobetter-course-page="on"] [data-bb-personal-notes] > .bp-bppn-open {
   grid-column: 3; grid-row: 1 / 3; justify-self: end; background: #285c9f !important;
   color: #fff !important; padding: 12px 20px !important; border-radius: 9px !important;
   margin: 0 !important;
-  font: 600 14px/1.5 Arial,sans-serif !important; text-decoration: none !important;
+  font: 600 14px/1.5 'Assistant',sans-serif !important; text-decoration: none !important;
 }
 html[data-biobetter-course-page="on"] [data-bb-personal-notes] > .bp-bppn-open:hover { background: #1c4781 !important; }
 html[data-biobetter-course-page="on"] body > footer.elementor-location-footer { display: none !important; }

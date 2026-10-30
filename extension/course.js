@@ -16,11 +16,11 @@
   host.id = 'biobetter-ui';
   const ui = host.attachShadow({ mode: 'open' });
   ui.innerHTML = `<style>
-    :host{all:initial;position:fixed;inset:0 0 auto;z-index:90000;font-family:Arial,sans-serif;color:#1d3d66;direction:ltr}
+    :host{all:initial;position:fixed;inset:0 0 auto;z-index:90000;font-family:"Assistant",sans-serif;color:#1d3d66;direction:ltr}
     *{box-sizing:border-box}.bar{height:64px;display:flex;align-items:center;gap:20px;padding:0 30px;background:#fcfdff;border-bottom:1px solid #d9e3f0}
     .brand{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;letter-spacing:-.7px}.brand svg{width:28px;height:28px}.brand span{font-weight:400;color:#6b82a1}
     .hint{font-size:11px;letter-spacing:1.4px;color:#6b82a1;border-left:1px solid #d9e3f0;padding-left:20px}
-    button{margin-left:auto;display:flex;align-items:center;gap:10px;border:0;border-radius:8px;padding:10px 14px;background:#e7f0ff;color:#21528e;font:600 13px Arial,sans-serif;cursor:pointer}
+    button{margin-left:auto;display:flex;align-items:center;gap:10px;border:0;border-radius:8px;padding:10px 14px;background:#e7f0ff;color:#21528e;font:600 13px "Assistant",sans-serif;cursor:pointer}
     button:focus-visible{outline:3px solid #78a9f2;outline-offset:3px}.track{width:29px;height:17px;border-radius:12px;background:#3975cd;padding:3px}.track:after{content:'';display:block;width:11px;height:11px;border-radius:50%;background:white;margin-left:12px}
     button[aria-checked=false] .track{background:#8695aa}button[aria-checked=false] .track:after{margin-left:0}
     .bar.off{position:fixed;top:12px;left:16px;right:auto;height:48px;padding:6px 10px;border:1px solid #d9e3f0;border-radius:12px}.off .hint{display:none}.off .brand{font-size:16px}

@@ -4,6 +4,8 @@ A Chrome extension that makes BioPlus notebooks, course pages, and study hubs ca
 
 ## Install
 
+Versioned downloads and release notes are available on [GitHub Releases](https://github.com/ornave/BioBetter/releases). Changes are also recorded in [CHANGELOG.md](CHANGELOG.md).
+
 1. Download this repository using **Code → Download ZIP** and extract it, or clone it with `git clone https://github.com/ornave/BioBetter.git`.
 2. Open `chrome://extensions` in Chrome and enable **Developer mode**.
 3. Click **Load unpacked** and select the `extension` folder inside your downloaded or cloned project.
@@ -15,6 +17,7 @@ No build is needed to install the checked-in extension. If you edit its files, c
 
 ## What changes
 
+- Consistent `'Assistant',sans-serif` text across enhanced notebook, course, and subsubject pages, including navigation, dialogs, notes, and BioBetter controls. The page uses BioPlus's existing Assistant font; icon glyphs and typeset mathematics retain their dedicated fonts. Disabling BioBetter restores the site's fonts.
 - A centered, readable Hebrew lesson with clearer headings, comfortable line spacing, and a navy/blue palette.
 - A single page scrollbar for reading, replacing the nested lesson and course scroll containers. Notes, dialogs, and wide tables can still scroll when necessary.
 - Centered, proportionally scaled images, capped at the available width and 540 px height; original sources, links, and captions remain intact.
@@ -51,6 +54,8 @@ The only Chrome permission is `storage`, used for the enable switch and font siz
 
 ## Development and checks
 
+For work in a new coding session, start with [AGENTS.md](AGENTS.md). It records the design preferences, code map, content-preservation requirements, and browser-validation workflow; earlier chat history is not required.
+
 Requires Node.js 24 or later.
 
 ```sh
@@ -73,3 +78,12 @@ Subsubject regression tests cover exact HTML restoration, native select handlers
 The authenticated live page was also checked using the browser: all 21 lesson image nodes and the notes panel were preserved; disabling restored the exact original lesson HTML; enhanced reading removed the two nested scroll containers; the 390 px viewport had no horizontal overflow; and the site's notes panel opened successfully. Live checks use an injected preview of the same files. Unpacked installation still needs the manual Chrome steps above.
 
 Implementation references: [Chrome content scripts](https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts), [KaTeX security options](https://katex.org/docs/security).
+
+## Releases
+
+Use semantic versions: patch releases for fixes, minor releases for new features, and major releases for breaking changes. For each release:
+
+1. Update `extension/manifest.json`, `package.json`, and both root version fields in `package-lock.json` to the same version.
+2. Add dated release notes to `CHANGELOG.md`, then run `npm run check`, `npm test`, and `npm run build`.
+3. Commit the reviewed changes and create an annotated `vMAJOR.MINOR.PATCH` tag on that commit.
+4. Push the commit and tag, then publish a GitHub release with the changelog entry and a `BioBetter-vMAJOR.MINOR.PATCH.zip` containing the installable `extension/` folder.

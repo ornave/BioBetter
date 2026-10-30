@@ -1,5 +1,5 @@
 // Run this function in the authenticated notebook with the current reader.css
-// loaded. It exercises real Chrome cascade/layout, beyond the DOM-only tests.
+// and typography.css loaded. It exercises real Chrome cascade/layout, beyond the DOM-only tests.
 async () => {
   const ui = document.querySelector('#biobetter-ui').shadowRoot;
   const lesson = document.querySelector('.description');
@@ -27,6 +27,9 @@ async () => {
       await selectSize(size);
       const actual = [paragraph, span, listItem].filter(Boolean).map(e => getComputedStyle(e).fontSize);
       if (actual.some(value => value !== `${size}px`)) throw new Error(`Requested ${size}px; rendered ${actual.join(', ')}`);
+      const families = [paragraph, span, listItem, ...ui.querySelectorAll('button,select,output')]
+        .filter(Boolean).map(e => getComputedStyle(e).fontFamily.replace(/["']/g, ''));
+      if (families.some(value => value !== 'Assistant, sans-serif')) throw new Error(`Unexpected font family: ${families.join(', ')}`);
       results.push({ requested: size, rendered: actual, paragraphHeight: paragraph.getBoundingClientRect().height });
     }
     if (lesson.textContent !== originalText) throw new Error('Lesson text changed during resizing.');
