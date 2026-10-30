@@ -1,8 +1,10 @@
 (() => {
   'use strict';
-  if (document.getElementById('biobetter-ui') || !document.querySelector('.main.notebook .description')) return;
+  const lesson = document.querySelector('.main.notebook');
+  const sections = [...(lesson?.querySelectorAll('.description, .brief') || [])];
+  if (document.getElementById('biobetter-ui') || !sections.length) return;
+  const lessonNodes = selector => sections.flatMap(section => [...section.querySelectorAll(selector)]);
   const root = document.documentElement;
-  const lesson = document.querySelector('.main.notebook .description');
   const storage = globalThis.chrome?.storage?.local;
   const defaults = { enabled: true, fontSize: 18 };
   let settings = { ...defaults };
@@ -43,7 +45,7 @@
   const $ = selector => ui.querySelector(selector);
 
   function anchor() {
-    const nodes = [...lesson.querySelectorAll('p,h1,h2,h3,img')];
+    const nodes = lessonNodes('p,h1,h2,h3,img');
     const node = nodes.find(e => { const r = e.getBoundingClientRect(); return r.height && r.bottom > 95 && r.top < innerHeight; });
     return node ? { node, top: node.getBoundingClientRect().top } : null;
   }
@@ -55,7 +57,7 @@
     else window.scrollBy(0, delta);
   }
   function addMath() {
-    for (const paragraph of lesson.querySelectorAll('p')) {
+    for (const paragraph of lessonNodes('p')) {
       if (mathCards.has(paragraph)) continue;
       const result = globalThis.BioBetterMath?.classify(paragraph);
       if (!result) continue;
@@ -101,7 +103,7 @@
     mathCards.clear();
   }
   function chapters() {
-    const headings = [...lesson.querySelectorAll('h1,h2,h3')].filter(e => !e.classList.contains('sectionTitle'));
+    const headings = lessonNodes('h1,h2,h3').filter(e => !e.classList.contains('sectionTitle'));
     const select = $('select');
     select.replaceChildren(new Option('במחברת הזו', ''));
     headings.forEach((heading, index) => select.add(new Option(heading.textContent.trim(), String(index))));
@@ -122,7 +124,7 @@
     const saved = anchor();
     // Freehand ink can use absolute page coordinates. Keep the site's original geometry
     // whenever saved strokes exist or drawing is active; never move or rewrite strokes.
-    inkPaused = document.body.classList.contains('nb-inking') || !!lesson.querySelector('.nb-ink-surface path');
+    inkPaused = document.body.classList.contains('nb-inking') || lessonNodes('.nb-ink-surface path').length > 0;
     active = settings.enabled && !inkPaused;
     if (active) {
       root.setAttribute('data-biobetter', 'on');
@@ -172,7 +174,7 @@
     if (records.every(r => r.type === 'childList' && [...r.addedNodes, ...r.removedNodes].every(n => n.nodeType === 1 && n.classList.contains('bb-math-host')))) return;
     clearTimeout(mutationTimer);
     mutationTimer = setTimeout(() => {
-      const paused = document.body.classList.contains('nb-inking') || !!lesson.querySelector('.nb-ink-surface path');
+      const paused = document.body.classList.contains('nb-inking') || lessonNodes('.nb-ink-surface path').length > 0;
       if (paused !== inkPaused) apply();
       else if (active) {
         // Rebuild from live source so edits/highlights cannot leave stale hidden equations.
@@ -180,9 +182,9 @@
       }
     }, 120);
   });
-  observer.observe(lesson, { childList: true, subtree: true, characterData: true });
+  for (const section of sections) observer.observe(section, { childList: true, subtree: true, characterData: true });
   const bodyObserver = new MutationObserver(() => {
-    const paused = document.body.classList.contains('nb-inking') || !!lesson.querySelector('.nb-ink-surface path');
+    const paused = document.body.classList.contains('nb-inking') || lessonNodes('.nb-ink-surface path').length > 0;
     if (paused !== inkPaused) apply();
   });
   bodyObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });

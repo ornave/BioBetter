@@ -18,7 +18,7 @@ No build is needed to install the checked-in extension. If you edit its files, c
 ## What changes
 
 - Consistent `'Assistant',sans-serif` text across enhanced notebook, course, and subsubject pages, including navigation, dialogs, notes, and BioBetter controls. The page uses BioPlus's existing Assistant font; icon glyphs and typeset mathematics retain their dedicated fonts. Disabling BioBetter restores the site's fonts.
-- A centered, readable Hebrew lesson with clearer headings, comfortable line spacing, and a navy/blue palette.
+- A centered, readable Hebrew lesson with clearer headings, comfortable line spacing, and a navy/blue palette. The shared design covers all `/notebook/*` URLs with the recognized lesson structure, including both full (`description`) and brief (`brief`) sections; it is not configured per topic.
 - A single page scrollbar for reading, replacing the nested lesson and course scroll containers. Notes, dialogs, and wide tables can still scroll when necessary.
 - Centered, proportionally scaled images, capped at the available width and 540 px height; original sources, links, and captions remain intact.
 - A chapter selector, reading progress indicator, and text size controls (16–24 px).

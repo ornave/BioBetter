@@ -16,7 +16,8 @@ const fixture = `<!doctype html><html dir="rtl"><body>
 </body></html>`;
 const tick = (ms = 30) => new Promise(resolve => setTimeout(resolve, ms));
 async function setup(options = {}) {
-  const dom = new JSDOM(fixture, { url: 'https://bioplus.co.il/notebook/test/', runScripts: 'outside-only', pretendToBeVisual: true });
+  const html = options.brief ? fixture.replace('class="description notebookSection"', 'class="brief notebookSection"') : fixture;
+  const dom = new JSDOM(html, { url: 'https://bioplus.co.il/notebook/test/', runScripts: 'outside-only', pretendToBeVisual: true });
   const w = dom.window;
   w.scrollBy = () => {};
   w.eval(readFileSync('extension/vendor/katex.min.js', 'utf8'));
@@ -29,7 +30,10 @@ async function setup(options = {}) {
   if (options.ink) w.document.querySelector('.nb-ink-root').insertAdjacentHTML('beforeend', '<svg class="nb-ink-surface"><path d="M0 0 L30 50"/></svg>');
   const original = w.document.querySelector('.nb-annotatable');
   const baseline = { html: original.innerHTML, text: original.textContent, nodes: [...original.querySelectorAll('*')], note: w.document.querySelector('#nb-notes-panel'), input: w.document.querySelector('textarea') };
-  if (options.noLesson) original.closest('.description').remove();
+  if (options.noLesson) original.closest('section').remove();
+  if (options.mixed) {
+    w.document.querySelector('.videos').insertAdjacentHTML('beforebegin', '<section class="brief notebookSection"><h2>תקציר נוסף</h2><p id="brief-equation">A+B=C</p><a href="/notebook/next/?from=brief" target="_blank">המשך</a><svg class="nb-ink-surface"></svg></section>');
+  }
   w.eval(readFileSync('extension/math.js', 'utf8'));
   w.eval(readFileSync('extension/content.js', 'utf8'));
   await tick();
@@ -37,8 +41,9 @@ async function setup(options = {}) {
   return { dom, w, d: w.document, ui, state, listeners, baseline, original };
 }
 
-test('preserves text offsets, original nodes, note inputs and exact HTML across repeated toggles', async () => {
-  const s = await setup();
+for (const brief of [false, true]) {
+test(`preserves text offsets, original nodes, note inputs and exact HTML across repeated toggles (${brief ? 'brief' : 'description'})`, async () => {
+  const s = await setup({ brief });
   try {
     const walker = s.d.createTreeWalker(s.original, s.w.NodeFilter.SHOW_TEXT);
     let text = '', node;
@@ -59,6 +64,7 @@ test('preserves text offsets, original nodes, note inputs and exact HTML across 
     assert.equal(s.baseline.input.value, 'A note edited while BioBetter is active');
   } finally { s.dom.window.close(); }
 });
+}
 
 test('typesets explicit math without guessing lost fractions or changing source characters', async () => {
   const s = await setup();
@@ -94,8 +100,9 @@ test('updates math when content changes and leaves highlighted equations visible
   } finally { s.dom.window.close(); }
 });
 
-test('restores original geometry for saved ink and while drawing is active', async () => {
-  const s = await setup({ ink: true });
+for (const brief of [false, true]) {
+test(`restores original geometry for saved ink and while drawing is active (${brief ? 'brief' : 'description'})`, async () => {
+  const s = await setup({ ink: true, brief });
   try {
     assert.equal(s.d.documentElement.hasAttribute('data-biobetter'), false);
     assert.equal(s.original.innerHTML, s.baseline.html);
@@ -108,6 +115,40 @@ test('restores original geometry for saved ink and while drawing is active', asy
     assert.equal(s.d.documentElement.hasAttribute('data-biobetter'), false);
     s.d.body.classList.remove('nb-inking');
     await tick();
+    assert.equal(s.d.documentElement.getAttribute('data-biobetter'), 'on');
+  } finally { s.dom.window.close(); }
+});
+}
+
+test('enhances both lesson sections together and protects ink in the second section', async () => {
+  const s = await setup({ mixed: true });
+  try {
+    const brief = s.d.querySelector('.brief');
+    const link = brief.querySelector('a');
+    let clicked = 0;
+    link.addEventListener('click', event => { event.preventDefault(); clicked++; });
+    assert.equal(s.ui.querySelector('select').options.length, 3);
+    assert.ok(s.d.querySelector('#reaction').classList.contains('bb-equation-rendered'));
+    assert.ok(s.d.querySelector('#brief-equation').classList.contains('bb-equation-rendered'));
+    s.ui.querySelector('.toggle').click();
+    const mainHTML = s.d.querySelector('.main.notebook').innerHTML;
+    s.ui.querySelector('.toggle').click();
+    s.ui.querySelector('.toggle').click();
+    assert.equal(s.d.querySelector('.main.notebook').innerHTML, mainHTML);
+    assert.equal(brief.querySelector('a'), link);
+    assert.equal(link.getAttribute('href'), '/notebook/next/?from=brief');
+    assert.equal(link.target, '_blank');
+    link.click();
+    assert.equal(clicked, 1);
+    s.ui.querySelector('.toggle').click();
+    const path = s.d.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', 'M0 0 L30 50');
+    brief.querySelector('svg').append(path);
+    await tick(250);
+    assert.equal(s.d.documentElement.hasAttribute('data-biobetter'), false);
+    assert.equal(path.isConnected, true);
+    path.remove();
+    await tick(250);
     assert.equal(s.d.documentElement.getAttribute('data-biobetter'), 'on');
   } finally { s.dom.window.close(); }
 });

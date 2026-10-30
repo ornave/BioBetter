@@ -18,7 +18,7 @@ BioBetter is a reversible Chrome Manifest V3 extension for the authenticated Heb
 
 | Route / concern | Files | Existing structure / behavior |
 | --- | --- | --- |
-| `/notebook/*` | `extension/content.js`, `reader.css`, `math.js` | `.main.notebook`; reading controls, chapters, math, notes and ink protection |
+| `/notebook/*` | `extension/content.js`, `reader.css`, `math.js` | `.main.notebook` with `.description` and/or `.brief` lesson sections; shared reading controls, chapters, math, notes and ink protection |
 | `/course/*` | `extension/course.js`, `course.css` | `body.single-course .main > .courseSubjects`; subject cards, native progress, separate personal-notes shortcut |
 | `/subsubject/*` | `extension/subsubject.js`, `subsubject.css` | `body.single-subsubject .whole > .main`; `.checkList` overview, `.box.items` resources, expandable `#bp-resource-completion` |
 | Extension scope | `extension/manifest.json` | Explicit HTTPS matches, including `www`; separate scripts and styles per page family |

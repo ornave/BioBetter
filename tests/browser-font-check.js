@@ -2,7 +2,7 @@
 // and typography.css loaded. It exercises real Chrome cascade/layout, beyond the DOM-only tests.
 async () => {
   const ui = document.querySelector('#biobetter-ui').shadowRoot;
-  const lesson = document.querySelector('.description');
+  const lesson = document.querySelector('.main.notebook :is(.description, .brief)');
   const paragraph = lesson.querySelector('p:not(.bb-equation-source):not(:has(img))');
   const listItem = lesson.querySelector('li');
   const span = paragraph.querySelector('span');

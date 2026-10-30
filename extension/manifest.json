@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "BioBetter",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A calmer BioPlus: readable notebooks, clear course progress, and organized study materials. Switch back anytime.",
   "permissions": [
     "storage"
